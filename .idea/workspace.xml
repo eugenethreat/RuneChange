@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3f4a73f-4f3f-404c-a857-5c925b1639aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/RuneFamily.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Slots.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/runesReforged.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/runesReforged.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/App$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -108,7 +122,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608631222737</updated>
-      <workItem from="1608631224172" duration="4702000" />
+      <workItem from="1608631224172" duration="5308000" />
+      <workItem from="1608654318888" duration="5153000" />
     </task>
     <servers />
   </component>
@@ -124,21 +139,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="977" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608631296919" />
-    <state width="960" height="286" key="GridCell.Tab.0.bottom" timestamp="1608634628666">
+    <state x="1144" y="203" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1608657694027">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
-    <state width="960" height="286" key="GridCell.Tab.0.center" timestamp="1608634628666">
+    <state x="1144" y="203" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608657694027" />
+    <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608656980183">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
-    <state width="960" height="286" key="GridCell.Tab.0.left" timestamp="1608634628666">
+    <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608656980183" />
+    <state width="960" height="261" key="GridCell.Tab.0.bottom" timestamp="1608659542164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
-    <state width="960" height="286" key="GridCell.Tab.0.right" timestamp="1608634628666">
+    <state width="960" height="261" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608659542164" />
+    <state width="960" height="261" key="GridCell.Tab.0.center" timestamp="1608659542164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
+    <state width="960" height="261" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608659542164" />
+    <state width="960" height="261" key="GridCell.Tab.0.left" timestamp="1608659542164">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="261" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608659542164" />
+    <state width="960" height="261" key="GridCell.Tab.0.right" timestamp="1608659542164">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="261" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608659542164" />
+    <state x="-7" y="0" width="974" height="1047" key="dock-window-1" timestamp="1608657321762">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-7" y="0" width="974" height="1047" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608657321762" />
   </component>
 </project>

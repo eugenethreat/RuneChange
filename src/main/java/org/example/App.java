@@ -4,28 +4,25 @@ package org.example;
  * Hello world!
  */
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.stirante.lolclient.ClientApi;
 import com.stirante.lolclient.ClientConnectionListener;
 import generated.*;
 
 
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 import generated.LolPerksPerkPageResource;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 
 public class App {
@@ -85,11 +82,23 @@ public class App {
                         page1 = availablePages.get(0);
                         //rune pages are accessible!
 
-                        for(Integer name : page1.selectedPerkIds){
+                        for (Integer name : page1.selectedPerkIds) {
                             System.out.println((name));
                         }
 
                         System.out.println(page1.name);
+                        HashMap<String, String> runeNamesAndIds = getPerkNames();
+
+                        /*
+                        TODO: replace ids with names
+                         */
+
+                        for (Integer name : page1.selectedPerkIds) {
+                            String nameStr = name.toString();
+                            System.out.println(runeNamesAndIds.get(nameStr));
+                        }
+
+
                     } else {
                         page1 = new LolPerksPerkPageResource();
                     }
@@ -104,5 +113,50 @@ public class App {
         }
     }
 
+    public static HashMap<String, String> getPerkNames() {
+        Gson gson = new Gson();
+        HashMap<String, String> runeNamesAndIds = new HashMap<>();
+
+        String all = "";
+
+        File runesReforged = new File(".\\resources\\runesReforged.json");
+        try {
+            Scanner reader = new Scanner(runesReforged);
+
+            while (reader.hasNext()) {
+                String current = reader.next();
+                //System.out.println(current);
+                all = all + current;
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        RuneFamily[] runes = gson.fromJson(all, RuneFamily[].class);
+
+        for (RuneFamily rune : runes) {
+            Slots[] s = rune.getSlots();
+
+            //System.out.println(rune.getName());
+            //System.out.println(s[0].runes[0].name);
+            //jank
+
+            for (int i = 0; i < s.length; i++) {
+                for (int j = 0; j < s[i].runes.length; j++) {
+                    String aName = s[i].runes[j].name;
+                    String anId = s[i].runes[j].id;
+
+                    runeNamesAndIds.put(anId, aName);
+                }
+            }
+
+
+        }
+
+        System.out.println(runeNamesAndIds);
+        return runeNamesAndIds;
+    }
 
 }
