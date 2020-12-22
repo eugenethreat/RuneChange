@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3f4a73f-4f3f-404c-a857-5c925b1639aa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/App$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +114,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608631222737</updated>
-      <workItem from="1608631224172" duration="2047000" />
+      <workItem from="1608631224172" duration="3649000" />
     </task>
     <servers />
   </component>
@@ -124,21 +130,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="977" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608631296919" />
-    <state width="960" height="286" key="GridCell.Tab.0.bottom" timestamp="1608632571453">
+    <state width="960" height="286" key="GridCell.Tab.0.bottom" timestamp="1608634628666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608632571453" />
-    <state width="960" height="286" key="GridCell.Tab.0.center" timestamp="1608632571453">
+    <state width="960" height="286" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
+    <state width="960" height="286" key="GridCell.Tab.0.center" timestamp="1608634628666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608632571453" />
-    <state width="960" height="286" key="GridCell.Tab.0.left" timestamp="1608632571453">
+    <state width="960" height="286" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
+    <state width="960" height="286" key="GridCell.Tab.0.left" timestamp="1608634628666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608632571453" />
-    <state width="960" height="286" key="GridCell.Tab.0.right" timestamp="1608632571453">
+    <state width="960" height="286" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
+    <state width="960" height="286" key="GridCell.Tab.0.right" timestamp="1608634628666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="286" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608632571453" />
+    <state width="960" height="286" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608634628666" />
   </component>
 </project>
