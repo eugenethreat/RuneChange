@@ -1,2 +1,7 @@
-"# RuneChanger-Proto"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin https://github.com/eugenethreat/RuneChanger-Proto.git git push -u origin main
-"# RuneChanger-Proto"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin https://github.com/eugenethreat/RuneChanger-Proto.git git push -u origin main
+Resources: 
+
+https://github.com/stirante/RuneChanger
+https://github.com/stirante/lol-client-java-api
+https://riot-api-libraries.readthedocs.io/en/latest/lcu.html
+
+
