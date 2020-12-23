@@ -76,6 +76,8 @@ public class App {
                         System.out.println(runeNamesAndIds.get(nameStr));
                     }
 
+                    setNewPage();
+
                 } else {
                     page1 = new LolPerksPerkPageResource();
                 }
@@ -83,6 +85,55 @@ public class App {
 
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+
+    }
+
+    public static void setNewPage() {
+        System.out.println("----------------");
+        try {
+            LolPerksPerkPageResource page1 = getApi().executeGet("/lol-perks/v1/currentpage", LolPerksPerkPageResource.class);
+            System.out.println(page1.isEditable);
+            System.out.println(page1.id);
+            System.out.println(page1.name);
+
+            System.out.println(page1.selectedPerkIds);
+
+            System.out.println("setting new page");
+
+            List<Integer> listOfNewPerks = new ArrayList<>();
+
+            listOfNewPerks.add(8112);
+            listOfNewPerks.add(8126);
+            listOfNewPerks.add(8136);
+            listOfNewPerks.add(8106);
+
+            listOfNewPerks.add(8009);
+            listOfNewPerks.add(8014);
+
+            listOfNewPerks.add(5005);
+            listOfNewPerks.add(5008);
+            listOfNewPerks.add(5002);
+
+            System.out.println(listOfNewPerks);
+
+            page1.selectedPerkIds = listOfNewPerks;
+            page1.name = "test page";
+
+            try {
+                Boolean succ;
+                //succ = getApi().executePut("lol-perks/v1/pages/", page1);
+                succ = getApi().executePut("lol-perks/v1/pages/" + page1.id, page1);
+
+                System.out.println("worked: " + succ);
+                //succ needs to be true
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
