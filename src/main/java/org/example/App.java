@@ -92,7 +92,10 @@ public class App {
     public static void setNewPage() {
         System.out.println("----------------");
         try {
-            LolPerksPerkPageResource page1 = getApi().executeGet("/lol-perks/v1/currentpage", LolPerksPerkPageResource.class);
+            LolPerksPerkPageResource[] pages = api.executeGet("/lol-perks/v1/pages", LolPerksPerkPageResource[].class);
+
+            LolPerksPerkPageResource page1 = pages[0];
+
             System.out.println(page1.isEditable);
             System.out.println(page1.id);
             System.out.println(page1.name);
@@ -117,15 +120,24 @@ public class App {
 
             System.out.println(listOfNewPerks);
 
-            page1.selectedPerkIds = listOfNewPerks;
-            page1.name = "test page";
+            LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
+            newPage.id = page1.id;
+            newPage.selectedPerkIds = listOfNewPerks;
+            newPage.name = "meowww";
 
             try {
-                Boolean succ;
-                //succ = getApi().executePut("lol-perks/v1/pages/", page1);
-                succ = getApi().executePut("lol-perks/v1/pages/" + page1.id, page1);
+                if (page1.id != null) {
 
-                System.out.println("worked: " + succ);
+                    Boolean succ;
+                    succ = getApi().executePut("lol-perks/v1/pages/", newPage);
+                    System.out.println("worked: " + succ);
+
+                    getApi().executeDelete("/lol-perks/v1/pages/" + page1.id);
+
+                } else {
+
+                }
+
                 //succ needs to be true
             } catch (IOException e) {
                 e.printStackTrace();
