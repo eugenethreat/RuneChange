@@ -122,7 +122,8 @@
       <workItem from="1608654318888" duration="7201000" />
       <workItem from="1608683787933" duration="13000" />
       <workItem from="1608686292449" duration="537000" />
-      <workItem from="1608716597096" duration="3792000" />
+      <workItem from="1608716597096" duration="4401000" />
+      <workItem from="1608896043947" duration="3621000" />
     </task>
     <servers />
   </component>
@@ -150,29 +151,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608656980183" />
-    <state width="960" height="256" key="GridCell.Tab.0.bottom" timestamp="1608720851263">
+    <state width="960" height="256" key="GridCell.Tab.0.bottom" timestamp="1608905583785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608720851263" />
-    <state width="960" height="256" key="GridCell.Tab.0.center" timestamp="1608720851263">
+    <state width="960" height="256" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
+    <state width="960" height="256" key="GridCell.Tab.0.center" timestamp="1608905583785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608720851263" />
-    <state width="960" height="256" key="GridCell.Tab.0.left" timestamp="1608720851263">
+    <state width="960" height="256" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
+    <state width="960" height="256" key="GridCell.Tab.0.left" timestamp="1608905583785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608720851263" />
-    <state width="960" height="256" key="GridCell.Tab.0.right" timestamp="1608720851263">
+    <state width="960" height="256" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
+    <state width="960" height="256" key="GridCell.Tab.0.right" timestamp="1608905583785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608720851263" />
+    <state width="960" height="256" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
     <state x="1249" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608718104038">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1249" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608718104038" />
-    <state x="-7" y="164" width="974" height="876" key="dock-window-1" timestamp="1608659728949">
+    <state x="-7" y="0" width="974" height="1047" key="dock-window-1" timestamp="1608905550844">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-7" y="164" width="974" height="876" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608659728949" />
+    <state x="-7" y="0" width="974" height="1047" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905550844" />
+    <state x="1102" y="229" width="670" height="58" key="search.everywhere.popup" timestamp="1608905263289">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1102" y="229" width="670" height="58" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905263289" />
   </component>
 </project>

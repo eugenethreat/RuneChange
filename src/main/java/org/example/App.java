@@ -56,37 +56,7 @@ public class App {
     }
 
     private static void whenConnected() {
-        try {
-            //change pages
-            LolPerksPerkPageResource page1 = getApi().executeGet("/lol-perks/v1/currentpage", LolPerksPerkPageResource.class);
-            if (!page1.isEditable || !page1.isActive) {
-                //get all rune pages
-                LolPerksPerkPageResource[] pages = getApi().executeGet("/lol-perks/v1/pages", LolPerksPerkPageResource[].class);
-                //find available pages
-                List<LolPerksPerkPageResource> availablePages = Arrays.stream(pages).filter(p -> p.isEditable).collect(Collectors.toList());
-                if (availablePages.size() > 0) {
-
-                    page1 = availablePages.get(0);
-                    //rune pages are accessible!
-
-                    for (Integer name : page1.selectedPerkIds) {
-                        String nameStr = name.toString();
-                        currentRunes.add(nameStr);
-
-                        System.out.println(runeNamesAndIds.get(nameStr));
-                    }
-
-                    setNewPage();
-
-                } else {
-                    page1 = new LolPerksPerkPageResource();
-                }
-            }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
+        setNewPage();
     }
 
     public static void setNewPage() {
@@ -94,61 +64,116 @@ public class App {
         try {
             LolPerksPerkPageResource[] pages = api.executeGet("/lol-perks/v1/pages", LolPerksPerkPageResource[].class);
 
-            LolPerksPerkPageResource page1 = pages[0];
+            /*
+            check if pages already exist
+            >if pages exist, edit them
+            >if they don't make new ones
+             */
 
-            System.out.println(page1.isEditable);
-            System.out.println(page1.id);
-            System.out.println(page1.name);
+            if (!pages[0].isDeletable) {
+                System.out.println("no user-created pages!");
 
-            System.out.println(page1.selectedPerkIds);
+                LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
+                newPage.name = "NEW TEST PAGE";
 
-            System.out.println("setting new page");
+                List<Integer> listOfNewPerks = new ArrayList<>();
 
-            List<Integer> listOfNewPerks = new ArrayList<>();
 
-            listOfNewPerks.add(8112);
-            listOfNewPerks.add(8126);
-            listOfNewPerks.add(8136);
-            listOfNewPerks.add(8106);
+                listOfNewPerks.add(8112);
+                listOfNewPerks.add(8126);
+                listOfNewPerks.add(8136);
+                listOfNewPerks.add(8106);
+                /*
+                electrocute
+                cheap shot
+                zombie ward
+                ultimate hunter
+                 */
 
-            listOfNewPerks.add(8009);
-            listOfNewPerks.add(8014);
+                listOfNewPerks.add(8009);
+                listOfNewPerks.add(8014);
+                //presence of mind
+                //coupedegrace
 
-            listOfNewPerks.add(5005);
-            listOfNewPerks.add(5008);
-            listOfNewPerks.add(5002);
+                listOfNewPerks.add(5005);
+                listOfNewPerks.add(5008);
+                listOfNewPerks.add(5002);
 
-            System.out.println(listOfNewPerks);
+                newPage.selectedPerkIds = listOfNewPerks;
+                newPage.primaryStyleId = 8100;
+                newPage.subStyleId = 8000;
+                //need to ste primary/substyle ids as well!
 
-            LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
-            newPage.id = page1.id;
-            newPage.selectedPerkIds = listOfNewPerks;
-            newPage.name = "meowww";
+                /*
+                precision: 8000
+                domination: 8100
+                sorcery: 8200
+                inspiration: 8300
+                resolve: 8400
+                 */
 
-            try {
-                if (page1.id != null) {
+                System.out.println("valid: " + newPage.isValid);
 
-                    Boolean succ;
-                    succ = getApi().executePut("lol-perks/v1/pages/", newPage);
-                    System.out.println("worked: " + succ);
+                getApi().executePost("/lol-perks/v1/pages/", newPage);
 
-                    getApi().executeDelete("/lol-perks/v1/pages/" + page1.id);
 
-                } else {
+            } else {
 
+                LolPerksPerkPageResource page1 = pages[0];
+
+                System.out.println(page1.isEditable);
+                System.out.println(page1.id);
+                System.out.println(page1.name);
+
+                System.out.println(page1.selectedPerkIds);
+
+                System.out.println("setting new page");
+
+                List<Integer> listOfNewPerks = new ArrayList<>();
+
+                listOfNewPerks.add(8112);
+                listOfNewPerks.add(8126);
+                listOfNewPerks.add(8136);
+                listOfNewPerks.add(8106);
+
+                listOfNewPerks.add(8009);
+                listOfNewPerks.add(8014);
+
+                listOfNewPerks.add(5005);
+                listOfNewPerks.add(5008);
+                listOfNewPerks.add(5002);
+
+                System.out.println(listOfNewPerks);
+
+                LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
+                newPage.id = page1.id;
+                newPage.selectedPerkIds = listOfNewPerks;
+                newPage.name = "meowww";
+
+                try {
+                    if (page1.id != null) {
+
+                        Boolean succ;
+                        succ = getApi().executePut("lol-perks/v1/pages/" + page1.id, newPage);
+                        System.out.println("worked: " + succ);
+
+
+                    } else {
+                        System.out.println("something else ");
+                    }
+
+                    //succ needs to be true
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                //succ needs to be true
-            } catch (IOException e) {
-                e.printStackTrace();
+
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
 
     /*
     Loads rune names and matches into hashmap
