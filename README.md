@@ -11,11 +11,13 @@ https://nickcano.com/reversing-league-of-legends-client/
 https://lcu.vivide.re/ - LCU docs 
 
 **TODO**: 
-
-Hook up runesReforged.json to runes to get names instead of integers (JSON pattern matching)
-
 Spin up Discord API - check if Discord has r/w/x permissions to set runes 
 
+Clean up datadragon pattern matching 
+
+write listener to sit and wait until champ is locked in so I dont have to time alt f4ing 
+
+figure out how to grab runes / what runes are best - write rune pages for each champ 
 
 **Problems**:
 
