@@ -9,8 +9,6 @@ import com.stirante.lolclient.ClientConnectionListener;
 import java.io.*;
 import java.util.*;
 
-import com.stirante.lolclient.libs.org.apache.http.client.methods.HttpGet;
-import generated.LolPerksChampSelectMySelection;
 import generated.LolPerksPerkPageResource;
 
 import java.io.IOException;
@@ -26,7 +24,8 @@ public class App {
     static HashMap<String, String> runeNamesAndIds = getPerkNames();
     //map for matching ids to strings
 
-    static HashMap<String, String> champNamesAndKeys = getChampNames();
+    static ChampLoader champLoader = new ChampLoader();
+    static HashMap<String, String> champNamesAndKeys = champLoader.getChampMap();
 
     static List<Integer> poppyRunes = Arrays.asList(8437, 8446, 8429, 8451, 8345, 8313, 5005, 5008, 5002);
     //grasp, demolish,
@@ -77,7 +76,6 @@ public class App {
 
     private static void whenConnected() {
         setNewPage();
-        //getCurrentChamp();
     }
 
     private static String getCurrentChamp() {
@@ -93,8 +91,8 @@ public class App {
             //jank regex garbage
 
             System.out.println(strBack);
-            //System.out.println(champNamesAndKeys);
 
+            System.out.println(champNamesAndKeys);
             champ = champNamesAndKeys.get(strBack);
 
         } catch (IOException e) {
@@ -129,6 +127,7 @@ public class App {
                 List<Integer> listOfNewPerks = new ArrayList<>();
 
                 String champ = getCurrentChamp();
+
                 if (champ.equals("\"Poppy\"")) {
 
                     System.out.println("poppy!");
@@ -238,46 +237,6 @@ public class App {
             e.printStackTrace();
         }
     }
-
-    public static HashMap<String, String> getChampNames() {
-        Gson gson = new Gson();
-        HashMap<String, String> champNames = new HashMap<>();
-
-        String all = "";
-        //empty string to add to later
-
-        File runesReforged = new File(".\\resources\\champion.json");
-        try {
-            Scanner reader = new Scanner(runesReforged);
-            while (reader.hasNext()) {
-                String current = reader.next();
-                all = all + current;
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        JsonObject big = gson.fromJson(all, JsonObject.class);
-        JsonObject champsArray = big.getAsJsonObject("data");
-
-        Set<Map.Entry<String, JsonElement>> champSet = champsArray.entrySet();
-        HashMap<String, String> keyChampNamePairs = new HashMap<String, String>();
-
-        for (Map.Entry<String, JsonElement> ele : champSet) {
-            //ele = each entry, which is strucutred as a key/value of
-            JsonObject vals = (JsonObject) ele.getValue();
-            //System.out.println(vals.get("name") + " " + vals.get("key"));
-            //getting key/vals of name + key returned by client
-
-            keyChampNamePairs.put(vals.get("key").toString(), vals.get("name").toString());
-            //adding...
-        }
-
-        return keyChampNamePairs;
-
-    }
-
 
     /*
     Loads rune names and matches into hashmap
