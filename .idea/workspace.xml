@@ -4,7 +4,10 @@
     <list default="true" id="f3f4a73f-4f3f-404c-a857-5c925b1639aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/App$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +44,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
@@ -57,10 +70,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RuneChanger Proto 2 []" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+    <configuration name="AppTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="RuneChanger Proto 2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.AppTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RuneChangerProto2 []" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="delegateBuildToMaven" value="false" />
+            <option name="environmentProperties">
+              <map />
+            </option>
+            <option name="jreName" value="#USE_PROJECT_JDK" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="passParentEnv" value="true" />
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="true" />
+            <option name="vmOptions" value="" />
+          </MavenRunnerSettings>
+        </option>
         <option name="myRunnerParameters">
           <MavenRunnerParameters>
             <option name="profiles">
@@ -105,7 +148,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="Maven.RuneChanger Proto 2 []" />
+      <item itemvalue="JUnit.AppTest" />
+      <item itemvalue="Maven.RuneChangerProto2 []" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -123,7 +167,12 @@
       <workItem from="1608683787933" duration="13000" />
       <workItem from="1608686292449" duration="537000" />
       <workItem from="1608716597096" duration="4401000" />
-      <workItem from="1608896043947" duration="3621000" />
+      <workItem from="1608896043947" duration="5072000" />
+      <workItem from="1608958626755" duration="268000" />
+      <workItem from="1609002741577" duration="9456000" />
+      <workItem from="1609086678731" duration="1359000" />
+      <workItem from="1609088057207" duration="512000" />
+      <workItem from="1609088591462" duration="36000" />
     </task>
     <servers />
   </component>
@@ -131,14 +180,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="684" y="191" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608631747529">
+    <state x="1031" y="178" key="#Inspections" timestamp="1609015263034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="684" y="191" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608631747529" />
-    <state x="1245" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1608717929462">
+    <state x="1031" y="178" key="#Inspections/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609015263034" />
+    <state x="684" y="191" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609016790465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1245" y="229" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608717929462" />
+    <state x="684" y="191" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609016790465" />
+    <state x="1245" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1609013107806">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1245" y="229" key="#com.intellij.ide.util.MemberChooser/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609013107806" />
     <state x="977" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1608631296919">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -151,33 +204,57 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608656980183" />
-    <state width="960" height="256" key="GridCell.Tab.0.bottom" timestamp="1608905583785">
+    <state x="1010" y="333" key="FileChooserDialogImpl" timestamp="1609016728955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
-    <state width="960" height="256" key="GridCell.Tab.0.center" timestamp="1608905583785">
+    <state x="1010" y="333" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609016728955" />
+    <state width="960" height="246" key="GridCell.Tab.0.bottom" timestamp="1609088569226">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
-    <state width="960" height="256" key="GridCell.Tab.0.left" timestamp="1608905583785">
+    <state width="960" height="246" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609088569226" />
+    <state width="960" height="246" key="GridCell.Tab.0.center" timestamp="1609088569226">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
-    <state width="960" height="256" key="GridCell.Tab.0.right" timestamp="1608905583785">
+    <state width="960" height="246" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609088569226" />
+    <state width="960" height="246" key="GridCell.Tab.0.left" timestamp="1609088569226">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="256" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905583785" />
+    <state width="960" height="246" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609088569226" />
+    <state width="960" height="246" key="GridCell.Tab.0.right" timestamp="1609088569226">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="246" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609088569226" />
+    <state width="960" height="353" key="GridCell.Tab.1.bottom" timestamp="1609017357738">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="353" key="GridCell.Tab.1.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609017357738" />
+    <state width="960" height="353" key="GridCell.Tab.1.center" timestamp="1609017357737">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="353" key="GridCell.Tab.1.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609017357737" />
+    <state width="960" height="353" key="GridCell.Tab.1.left" timestamp="1609017357737">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="353" key="GridCell.Tab.1.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609017357737" />
+    <state width="960" height="353" key="GridCell.Tab.1.right" timestamp="1609017357737">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="353" key="GridCell.Tab.1.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609017357737" />
     <state x="1249" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608718104038">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1249" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608718104038" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-1" timestamp="1608905550844">
+    <state x="1164" y="225" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1609012820054">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905550844" />
-    <state x="1102" y="229" width="670" height="58" key="search.everywhere.popup" timestamp="1608905263289">
+    <state x="1164" y="225" key="com.intellij.testIntegration.createTest.CreateTestDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609012820054" />
+    <state x="149" y="109" width="864" height="767" key="dock-window-1" timestamp="1609088775548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1102" y="229" width="670" height="58" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1608905263289" />
+    <state x="149" y="109" width="864" height="767" key="dock-window-1/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609088775548" />
+    <state x="1102" y="229" width="672" height="160" key="search.everywhere.popup" timestamp="1609087721551">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1102" y="229" width="672" height="160" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609087721551" />
   </component>
 </project>

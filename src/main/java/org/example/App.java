@@ -1,18 +1,21 @@
 package org.example;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.stirante.lolclient.ClientApi;
 import com.stirante.lolclient.ClientConnectionListener;
 
 import java.io.*;
 import java.util.*;
 
+import com.stirante.lolclient.libs.org.apache.http.client.methods.HttpGet;
+import generated.LolPerksChampSelectMySelection;
 import generated.LolPerksPerkPageResource;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class App {
@@ -23,7 +26,24 @@ public class App {
     static HashMap<String, String> runeNamesAndIds = getPerkNames();
     //map for matching ids to strings
 
-    static ArrayList<String> currentRunes = new ArrayList<String>();
+    static HashMap<String, String> champNamesAndKeys = getChampNames();
+
+    static List<Integer> poppyRunes = Arrays.asList(8437, 8446, 8429, 8451, 8345, 8313, 5005, 5008, 5002);
+    //grasp, demolish,
+    //perfect timing
+    //resolve > inspiration
+
+    static List<Integer> sionRunes = Arrays.asList(8439, 8446, 8429, 8451, 8345, 8313, 5005, 5008, 5002);
+    //aftershock
+
+     /*
+    precision: 8000
+    domination: 8100
+    sorcery: 8200
+    inspiration: 8300
+    resolve: 8400
+     */
+
 
     public static void main(String[] args) {
 
@@ -57,7 +77,36 @@ public class App {
 
     private static void whenConnected() {
         setNewPage();
+        //getCurrentChamp();
     }
+
+    private static String getCurrentChamp() {
+        String champ = "";
+
+        try {
+            //System.out.println(getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class));
+            //oop baby
+
+            double idBack = (double) getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
+            String strBack = String.valueOf(idBack).split("\\.")[0];
+            strBack = "\"" + strBack + "\"";
+            //jank regex garbage
+
+            System.out.println(strBack);
+            //System.out.println(champNamesAndKeys);
+
+            champ = champNamesAndKeys.get(strBack);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("CHAMP: " + champ);
+        return champ;
+    }
+
+    //how to check when locked in / what champ is picked?
+
 
     public static void setNewPage() {
         System.out.println("----------------");
@@ -71,6 +120,7 @@ public class App {
              */
 
             if (!pages[0].isDeletable) {
+                //pages dont exist
                 System.out.println("no user-created pages!");
 
                 LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
@@ -78,6 +128,70 @@ public class App {
 
                 List<Integer> listOfNewPerks = new ArrayList<>();
 
+                String champ = getCurrentChamp();
+                if (champ.equals("\"Poppy\"")) {
+
+                    System.out.println("poppy!");
+
+                    newPage.name = "POPPY";
+                    listOfNewPerks = poppyRunes;
+                    newPage.primaryStyleId = 8400;
+                    newPage.subStyleId = 8300;
+
+                    newPage.selectedPerkIds = listOfNewPerks;
+
+
+                } else {
+                    System.out.println("not poppy ");
+
+                    listOfNewPerks.add(8112);
+                    listOfNewPerks.add(8126);
+                    listOfNewPerks.add(8136);
+                    listOfNewPerks.add(8106);
+                /*
+                electrocute
+                cheap shot
+                zombie ward
+                ultimate hunter
+                 */
+
+                    listOfNewPerks.add(8009);
+                    listOfNewPerks.add(8014);
+                    //presence of mind
+                    //coupedegrace
+
+                    listOfNewPerks.add(5005);
+                    listOfNewPerks.add(5008);
+                    listOfNewPerks.add(5002);
+
+                    newPage.primaryStyleId = 8100;
+                    newPage.subStyleId = 8000;
+
+                    newPage.selectedPerkIds = listOfNewPerks;
+
+                }
+                //need to ste primary/substyle ids as well!
+
+                /*
+                precision: 8000
+                domination: 8100
+                sorcery: 8200
+                inspiration: 8300
+                resolve: 8400
+                 */
+
+                System.out.println("valid: " + newPage.isValid);
+
+                getApi().executePost("/lol-perks/v1/pages/", newPage);
+
+
+            } else {
+                //pages exist
+
+                LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
+                newPage.name = "if sss exist already ...";
+
+                List<Integer> listOfNewPerks = new ArrayList<>();
 
                 listOfNewPerks.add(8112);
                 listOfNewPerks.add(8126);
@@ -114,64 +228,54 @@ public class App {
 
                 System.out.println("valid: " + newPage.isValid);
 
+                //delete old page
+
                 getApi().executePost("/lol-perks/v1/pages/", newPage);
-
-
-            } else {
-
-                LolPerksPerkPageResource page1 = pages[0];
-
-                System.out.println(page1.isEditable);
-                System.out.println(page1.id);
-                System.out.println(page1.name);
-
-                System.out.println(page1.selectedPerkIds);
-
-                System.out.println("setting new page");
-
-                List<Integer> listOfNewPerks = new ArrayList<>();
-
-                listOfNewPerks.add(8112);
-                listOfNewPerks.add(8126);
-                listOfNewPerks.add(8136);
-                listOfNewPerks.add(8106);
-
-                listOfNewPerks.add(8009);
-                listOfNewPerks.add(8014);
-
-                listOfNewPerks.add(5005);
-                listOfNewPerks.add(5008);
-                listOfNewPerks.add(5002);
-
-                System.out.println(listOfNewPerks);
-
-                LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
-                newPage.id = page1.id;
-                newPage.selectedPerkIds = listOfNewPerks;
-                newPage.name = "meowww";
-
-                try {
-                    if (page1.id != null) {
-
-                        Boolean succ;
-                        succ = getApi().executePut("lol-perks/v1/pages/" + page1.id, newPage);
-                        System.out.println("worked: " + succ);
-
-
-                    } else {
-                        System.out.println("something else ");
-                    }
-
-                    //succ needs to be true
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
 
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static HashMap<String, String> getChampNames() {
+        Gson gson = new Gson();
+        HashMap<String, String> champNames = new HashMap<>();
+
+        String all = "";
+        //empty string to add to later
+
+        File runesReforged = new File(".\\resources\\champion.json");
+        try {
+            Scanner reader = new Scanner(runesReforged);
+            while (reader.hasNext()) {
+                String current = reader.next();
+                all = all + current;
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        JsonObject big = gson.fromJson(all, JsonObject.class);
+        JsonObject champsArray = big.getAsJsonObject("data");
+
+        Set<Map.Entry<String, JsonElement>> champSet = champsArray.entrySet();
+        HashMap<String, String> keyChampNamePairs = new HashMap<String, String>();
+
+        for (Map.Entry<String, JsonElement> ele : champSet) {
+            //ele = each entry, which is strucutred as a key/value of
+            JsonObject vals = (JsonObject) ele.getValue();
+            //System.out.println(vals.get("name") + " " + vals.get("key"));
+            //getting key/vals of name + key returned by client
+
+            keyChampNamePairs.put(vals.get("key").toString(), vals.get("name").toString());
+            //adding...
+        }
+
+        return keyChampNamePairs;
+
     }
 
 
