@@ -15,13 +15,13 @@ Spin up Discord API - check if Discord has r/w/x permissions to set runes
 
 Clean up datadragon pattern matching 
 
-write listener to sit and wait until champ is locked in so I dont have to time alt f4ing 
-
 figure out how to grab runes / what runes are best - write rune pages for each champ 
 
 how to get runes? 
 
 get high elo matches, see what they are running via riot api? https://developer.riotgames.com/apis#match-v4/GET_getMatch
+
+clean up making rune pages if pages already exist 
 
 **Problems**:
 
