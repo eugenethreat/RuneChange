@@ -19,6 +19,10 @@ write listener to sit and wait until champ is locked in so I dont have to time a
 
 figure out how to grab runes / what runes are best - write rune pages for each champ 
 
+how to get runes? 
+
+get high elo matches, see what they are running via riot api? https://developer.riotgames.com/apis#match-v4/GET_getMatch
+
 **Problems**:
 
 LCU wrapper only runs locally - can't be entirely server side 

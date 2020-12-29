@@ -56,6 +56,7 @@ public class App {
             @Override
             public void onClientConnected() {
                 System.out.println("connected");
+
                 whenConnected();
                 api.stop();
 
@@ -75,7 +76,58 @@ public class App {
     }
 
     private static void whenConnected() {
+        peekChampSelect();
         setNewPage();
+    }
+
+    /*
+    Gates app until champ select
+     */
+    private static void peekChampSelect() {
+        try {
+            JsonObject details = getApi().executeGet("/lol-champ-select/v1/session", JsonObject.class);
+
+            while (details == null) {
+                //wait until champ select is entered
+                details = getApi().executeGet("/lol-champ-select/v1/session", JsonObject.class);
+            }
+
+            System.out.println(details.toString());
+            /*
+            what happens when you call this just sitting in the client?
+             */
+
+            /*
+            id: {actions=[[{actorCellId=0.0, championId=266.0, completed=false, id=1.0, isAllyAction=true, isInProgress=true,
+            pickTurn=1.0, type=pick}]], allowBattleBoost=false, allowDuplicatePicks=false, allowLockedEvents=false, allowRerolling=false,
+            allowSkinSelection=true, bans={myTeamBans=[], numBans=0.0, theirTeamBans=[]}, benchChampionIds=[], benchEnabled=false, boostableSkinCount=1.0, c
+            hatDetails={chatRoomName=c1~3c2b59ea33b56d961430c99f762153798f74b940@sec.pvp.net, chatRoomPassword=yeBruCQ6a6DyVmpS}, counter=-1.0,
+            entitledFeatureState={additionalRerolls=0.0, unlockedSkinIds=[]}, gameId=0.0, hasSimultaneousBans=false, hasSimultaneousPicks=true,
+            isCustomGame=true, isSpectating=false, localPlayerCellId=0.0, lockedEventIndex=-1.0, myTeam=[{assignedPosition=, cellId=0.0, championId=266.0,
+            championPickIntent=0.0, entitledFeatureType=, selectedSkinId=266000.0, spell1Id=4.0, spell2Id=12.0, summonerId=5.3750041E7, team=1.0, wardSkinId=-1.0}],
+             rerollsRemaining=0.0, skipChampionSelect=false, theirTeam=[], timer={adjustedTimeLeftInPhase=88232.0, internalNowInEpochMs=1.609268840573E12, isInfinite=false,
+             phase=BAN_PICK, totalTimeInPhase=92624.0}, trades=[]}
+             */
+
+            /*
+            wait till a champ is locked in
+             */
+            Object de2 = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
+            System.out.println(de2.toString());
+
+            while (de2.toString().equals("0.0")) {
+                //nothing
+                de2 = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
+            }
+
+            System.out.println("peeped tom1");
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            api.stop();
+        }
+
     }
 
     private static String getCurrentChamp() {
@@ -90,10 +142,8 @@ public class App {
             strBack = "\"" + strBack + "\"";
             //jank regex garbage
 
-            System.out.println(strBack);
-
-            System.out.println(champNamesAndKeys);
             champ = champNamesAndKeys.get(strBack);
+            //searches map for what champ was picked
 
         } catch (IOException e) {
             e.printStackTrace();
