@@ -1,7 +1,6 @@
 package org.example;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.stirante.lolclient.ClientApi;
 import com.stirante.lolclient.ClientConnectionListener;
@@ -10,6 +9,9 @@ import java.io.*;
 import java.util.*;
 
 import generated.LolPerksPerkPageResource;
+import org.example.champs.ChampLoader;
+import org.example.runes.RuneFamily;
+import org.example.runes.RuneSlots;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -31,9 +33,6 @@ public class App {
     //grasp, demolish,
     //perfect timing
     //resolve > inspiration
-
-    static List<Integer> sionRunes = Arrays.asList(8439, 8446, 8429, 8451, 8345, 8313, 5005, 5008, 5002);
-    //aftershock
 
      /*
     precision: 8000
@@ -71,19 +70,15 @@ public class App {
 
     }
 
-    public static ClientApi getApi() {
-        return api;
-    }
-
     private static void whenConnected() {
-        peekChampSelect();
+        waitUntilLockin();
         setNewPage();
     }
 
     /*
-    Gates app until champ select
+        Gates setting rune pages until champ locked in
      */
-    private static void peekChampSelect() {
+    private static void waitUntilLockin() {
         try {
             JsonObject details = getApi().executeGet("/lol-champ-select/v1/session", JsonObject.class);
 
@@ -91,11 +86,7 @@ public class App {
                 //wait until champ select is entered
                 details = getApi().executeGet("/lol-champ-select/v1/session", JsonObject.class);
             }
-
-            System.out.println(details.toString());
-            /*
-            what happens when you call this just sitting in the client?
-             */
+            //better performance may be to hook into client and wait until...
 
             /*
             id: {actions=[[{actorCellId=0.0, championId=266.0, completed=false, id=1.0, isAllyAction=true, isInProgress=true,
@@ -113,15 +104,11 @@ public class App {
             wait till a champ is locked in
              */
             Object de2 = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
-            System.out.println(de2.toString());
 
             while (de2.toString().equals("0.0")) {
                 //nothing
                 de2 = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
             }
-
-            System.out.println("peeped tom1");
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -130,6 +117,9 @@ public class App {
 
     }
 
+    /*
+        gets champ name text from "id"
+     */
     private static String getCurrentChamp() {
         String champ = "";
 
@@ -153,11 +143,9 @@ public class App {
         return champ;
     }
 
-    //how to check when locked in / what champ is picked?
-
-
     public static void setNewPage() {
         System.out.println("----------------");
+
         try {
             LolPerksPerkPageResource[] pages = api.executeGet("/lol-perks/v1/pages", LolPerksPerkPageResource[].class);
 
@@ -168,124 +156,32 @@ public class App {
              */
 
             if (!pages[0].isDeletable) {
-                //pages dont exist
-                System.out.println("no user-created pages!");
-
-                LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
-                newPage.name = "NEW TEST PAGE";
-
-                List<Integer> listOfNewPerks = new ArrayList<>();
-
-                String champ = getCurrentChamp();
-
-                if (champ.equals("\"Poppy\"")) {
-
-                    System.out.println("poppy!");
-
-                    newPage.name = "POPPY";
-                    listOfNewPerks = poppyRunes;
-                    newPage.primaryStyleId = 8400;
-                    newPage.subStyleId = 8300;
-
-                    newPage.selectedPerkIds = listOfNewPerks;
-
-
-                } else {
-                    System.out.println("not poppy ");
-
-                    listOfNewPerks.add(8112);
-                    listOfNewPerks.add(8126);
-                    listOfNewPerks.add(8136);
-                    listOfNewPerks.add(8106);
-                /*
-                electrocute
-                cheap shot
-                zombie ward
-                ultimate hunter
-                 */
-
-                    listOfNewPerks.add(8009);
-                    listOfNewPerks.add(8014);
-                    //presence of mind
-                    //coupedegrace
-
-                    listOfNewPerks.add(5005);
-                    listOfNewPerks.add(5008);
-                    listOfNewPerks.add(5002);
-
-                    newPage.primaryStyleId = 8100;
-                    newPage.subStyleId = 8000;
-
-                    newPage.selectedPerkIds = listOfNewPerks;
-
-                }
-                //need to ste primary/substyle ids as well!
-
-                /*
-                precision: 8000
-                domination: 8100
-                sorcery: 8200
-                inspiration: 8300
-                resolve: 8400
-                 */
-
-                System.out.println("valid: " + newPage.isValid);
-
-                getApi().executePost("/lol-perks/v1/pages/", newPage);
-
-
-            } else {
-                //pages exist
-
-                LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
-                newPage.name = "if sss exist already ...";
-
-                List<Integer> listOfNewPerks = new ArrayList<>();
-
-                listOfNewPerks.add(8112);
-                listOfNewPerks.add(8126);
-                listOfNewPerks.add(8136);
-                listOfNewPerks.add(8106);
-                /*
-                electrocute
-                cheap shot
-                zombie ward
-                ultimate hunter
-                 */
-
-                listOfNewPerks.add(8009);
-                listOfNewPerks.add(8014);
-                //presence of mind
-                //coupedegrace
-
-                listOfNewPerks.add(5005);
-                listOfNewPerks.add(5008);
-                listOfNewPerks.add(5002);
-
-                newPage.selectedPerkIds = listOfNewPerks;
-                newPage.primaryStyleId = 8100;
-                newPage.subStyleId = 8000;
-                //need to ste primary/substyle ids as well!
-
-                /*
-                precision: 8000
-                domination: 8100
-                sorcery: 8200
-                inspiration: 8300
-                resolve: 8400
-                 */
-
-                System.out.println("valid: " + newPage.isValid);
-
-                //delete old page
-
-                getApi().executePost("/lol-perks/v1/pages/", newPage);
-
-
+                //deletes old pages if necessary
+                getApi().executeDelete("/lol-perks/v1/pages");
             }
+
+            LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
+            List<Integer> listOfNewPerks;
+            String champ = getCurrentChamp();
+
+            /*
+                TODO: Replace this with code that fetches proper runepages for each champ
+             */
+
+            newPage.name = "Runes: " + champ;
+            listOfNewPerks = poppyRunes;
+            newPage.primaryStyleId = 8400;
+            newPage.subStyleId = 8300;
+            newPage.selectedPerkIds = listOfNewPerks;
+
+            getApi().executePost("/lol-perks/v1/pages/", newPage);
+
         } catch (IOException e) {
             e.printStackTrace();
+            api.stop();
         }
+
+
     }
 
     /*
@@ -315,7 +211,7 @@ public class App {
         RuneFamily[] runes = gson.fromJson(all, RuneFamily[].class);
 
         for (RuneFamily rune : runes) {
-            Slots[] s = rune.getSlots();
+            RuneSlots[] s = rune.getSlots();
 
             for (int i = 0; i < s.length; i++) {
                 for (int j = 0; j < s[i].runes.length; j++) {
@@ -328,6 +224,10 @@ public class App {
         }
 
         return runeNamesAndIds;
+    }
+
+    public static ClientApi getApi() {
+        return api;
     }
 
 }
