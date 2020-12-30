@@ -5,11 +5,11 @@ SLOTS: Array of runes
 Rune: individual runes with id, key, name, desc, etc
  */
 
-public class Slots {
+public class RuneSlots {
 
     public Rune[] runes;
 
-    public Slots(Rune[] a) {
+    public RuneSlots(Rune[] a) {
         runes = a;
     }
 

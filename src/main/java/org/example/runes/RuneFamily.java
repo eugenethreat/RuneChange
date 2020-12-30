@@ -1,4 +1,4 @@
-package org.example;
+package org.example.runes;
 
 /*
 overall family of runes
@@ -17,9 +17,9 @@ public class RuneFamily {
     private String key;
     private String icon;
     private String name;
-    Slots[] slots;
+    RuneSlots[] slots;
 
-    public RuneFamily(String a, String b, String c, String d, Slots[] e) {
+    public RuneFamily(String a, String b, String c, String d, RuneSlots[] e) {
         setId(a);
         setKey(b);
         setIcon(c);
@@ -27,7 +27,7 @@ public class RuneFamily {
         slots = e;
     }
 
-    public Slots[] getSlots() {
+    public RuneSlots[] getSlots() {
         return slots;
     }
 

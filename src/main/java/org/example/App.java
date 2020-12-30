@@ -155,8 +155,9 @@ public class App {
             >if they don't make new ones
              */
 
-            if (!pages[0].isDeletable) {
-                //deletes old pages if necessary
+            if (pages[0].isDeletable) {
+                //deletes pages that already exist
+                //change this to only delete first/active page?
                 getApi().executeDelete("/lol-perks/v1/pages");
             }
 

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.runes;
 
 import com.google.gson.Gson;
 import generated.LolPerksPerkPageResource;

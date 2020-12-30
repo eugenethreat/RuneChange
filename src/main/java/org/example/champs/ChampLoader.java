@@ -1,4 +1,4 @@
-package org.example;
+package org.example.champs;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -20,7 +20,6 @@ public class ChampLoader {
     HashMap<String, String> champMap = loadChamps();
 
     public ChampLoader() {
-        loadChamps();
     }
 
     private HashMap<String, String> loadChamps() {
@@ -57,7 +56,7 @@ public class ChampLoader {
             keyChampNamePairs.put(vals.get("key").toString(), vals.get("name").toString());
             //adding...
         }
-        
+
         return keyChampNamePairs;
 
     }
