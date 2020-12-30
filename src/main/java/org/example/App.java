@@ -10,6 +10,7 @@ import java.util.*;
 
 import generated.LolPerksPerkPageResource;
 import org.example.champs.ChampLoader;
+import org.example.puller.RunePuller;
 import org.example.runes.RuneFamily;
 import org.example.runes.RuneSlots;
 
@@ -29,19 +30,7 @@ public class App {
     static ChampLoader champLoader = new ChampLoader();
     static HashMap<String, String> champNamesAndKeys = champLoader.getChampMap();
 
-    static List<Integer> poppyRunes = Arrays.asList(8437, 8446, 8429, 8451, 8345, 8313, 5005, 5008, 5002);
-    //grasp, demolish,
-    //perfect timing
-    //resolve > inspiration
-
-     /*
-    precision: 8000
-    domination: 8100
-    sorcery: 8200
-    inspiration: 8300
-    resolve: 8400
-     */
-
+    static RunePuller opggGetter = new RunePuller();
 
     public static void main(String[] args) {
 
@@ -161,19 +150,8 @@ public class App {
                 getApi().executeDelete("/lol-perks/v1/pages");
             }
 
-            LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
-            List<Integer> listOfNewPerks;
             String champ = getCurrentChamp();
-
-            /*
-                TODO: Replace this with code that fetches proper runepages for each champ
-             */
-
-            newPage.name = "Runes: " + champ;
-            listOfNewPerks = poppyRunes;
-            newPage.primaryStyleId = 8400;
-            newPage.subStyleId = 8300;
-            newPage.selectedPerkIds = listOfNewPerks;
+            LolPerksPerkPageResource newPage = doTheThing(champ);
 
             getApi().executePost("/lol-perks/v1/pages/", newPage);
 
@@ -181,6 +159,108 @@ public class App {
             e.printStackTrace();
             api.stop();
         }
+
+
+    }
+
+    /*
+    Gets locked in champ and fetches runes
+     */
+    private static LolPerksPerkPageResource doTheThing(String champ) {
+        ArrayList<String> runenameStrings = opggGetter.returnRunes(champ);
+
+        List<Integer> opRunes = new ArrayList();
+
+        //System.out.println(runeNamesAndIds);
+
+        for (String str : runenameStrings) {
+            //System.out.println(str);
+            str = str.replace(" ", "");
+            //removes spacing
+
+            String res = runeNamesAndIds.get(str);
+            //System.out.println(res);
+            if (res != null) {
+                opRunes.add(Integer.parseInt(res));
+                //if its not a tertiary
+            }
+        }
+
+        opRunes.add(5005);
+        opRunes.add(5008);
+        opRunes.add(5002);
+
+        LolPerksPerkPageResource newPage = new LolPerksPerkPageResource();
+
+        //List<Integer> poppyRunes = Arrays.asList(8437, 8446, 8429, 8451, 8345, 8313, 5005, 5008, 5002);
+        //grasp, demolish,
+        //perfect timing
+        //resolve > inspiration
+        /*
+        5005, > 10% atck speed
+        5008, > +9 adaptive force
+        5002  > +6 armor
+         */
+
+        newPage.name = "Runes: " + champ;
+
+        //GOTTA GET THESE SOMEHOW
+        /*
+            precision: 8000
+            domination: 8100
+            sorcery: 8200
+            inspiration: 8300
+            resolve: 8400
+         */
+
+        newPage.primaryStyleId = 8000;
+        newPage.subStyleId = 8100;
+
+        //primary id
+        if (opRunes.contains(8112) || opRunes.contains(8124) || opRunes.contains(8128) || opRunes.contains(9923)) {
+            System.out.println("domination");
+            newPage.primaryStyleId = 8100;
+        } else if (opRunes.contains(8214) || opRunes.contains(8229) || opRunes.contains(8230)) {
+            System.out.println("sorcery");
+            newPage.primaryStyleId = 8200;
+        } else if (opRunes.contains(8351) || opRunes.contains(8360) || opRunes.contains(8358)) {
+            System.out.println("inspiration");
+            newPage.primaryStyleId = 8300;
+        } else if (opRunes.contains(8437) || opRunes.contains(8439) || opRunes.contains(8465)) {
+            System.out.println("resolve");
+            newPage.primaryStyleId = 8400;
+        } else if (opRunes.contains(8005) || opRunes.contains(8008) || opRunes.contains(8021) || opRunes.contains(8010)) {
+            System.out.println("precision");
+            newPage.primaryStyleId = 8000;
+        }
+
+
+        String arbSecond = String.valueOf(opRunes.get(4));
+        if (arbSecond.matches("81[0-9][0-9]")) {
+            System.out.println("domination secondary!");
+            newPage.subStyleId = 8100;
+        } else if (arbSecond.matches("82[0-9][0-9]")) {
+            System.out.println("srocery secondary!");
+            newPage.subStyleId = 8200;
+
+        } else if (arbSecond.matches("83[0-9][0-9]")) {
+            newPage.subStyleId = 8300;
+
+            System.out.println("inspiration secondary!");
+        } else if (arbSecond.matches("84[0-9][0-9]")) {
+            System.out.println("reoslve secondary!");
+            newPage.subStyleId = 8400;
+
+        } else if (arbSecond.matches("80[0-9][0-9]")) {
+            System.out.println("precision secondary!");
+            newPage.subStyleId = 8500;
+
+        }
+
+        newPage.selectedPerkIds = opRunes;
+
+
+        return newPage;
 
 
     }
@@ -217,8 +297,10 @@ public class App {
             for (int i = 0; i < s.length; i++) {
                 for (int j = 0; j < s[i].runes.length; j++) {
                     String aName = s[i].runes[j].name;
+                    aName = aName.replace("\'", "");
+                    //removes ' for future's market
                     String anId = s[i].runes[j].id;
-                    runeNamesAndIds.put(anId, aName);
+                    runeNamesAndIds.put(aName, anId);
                 }
             }
 

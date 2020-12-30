@@ -1,78 +1,30 @@
-package org.example;
+package org.example.puller;
 
-import static org.junit.Assert.assertTrue;
-
-import com.google.gson.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.junit.Ignore;
-import org.junit.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.sql.SQLOutput;
-import java.util.*;
-import java.util.function.Consumer;
-import java.util.jar.JarOutputStream;
+import java.util.ArrayList;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest {
-    /**
-     * Rigorous Test :-)
+public class RunePuller {
+
+    /*
+        this class will pull runes from whatever resource (riot, op.gg, etc)
+        in order to create preferred rune pages for each champ.
      */
-    @Ignore
-    public void shouldAnswerWithTrue() {
-        assertTrue(true);
-    }
 
-    @Ignore
-    public void getChampNames() {
-        Gson gson = new Gson();
-        HashMap<String, String> champNames = new HashMap<>();
+    ArrayList<String> runeNames = new ArrayList<>();
 
-        String all = "";
-        //empty string to add to later
 
-        File runesReforged = new File(".\\resources\\champion.json");
-        try {
-            Scanner reader = new Scanner(runesReforged);
-            while (reader.hasNext()) {
-                String current = reader.next();
-                all = all + current;
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        JsonObject big = gson.fromJson(all, JsonObject.class);
-        JsonObject champsArray = big.getAsJsonObject("data");
-
-        Set<Map.Entry<String, JsonElement>> champSet = champsArray.entrySet();
-        HashMap<String, String> keyChampNamePairs = new HashMap<String, String>();
-
-        for (Map.Entry<String, JsonElement> ele : champSet) {
-            //ele = each entry, which is strucutred as a key/value of
-            JsonObject vals = (JsonObject) ele.getValue();
-            System.out.println(vals.get("name") + " " + vals.get("key"));
-            //getting key/vals of name + key returned by client
-
-            keyChampNamePairs.put(vals.get("key").toString(), vals.get("name").toString());
-            //adding...
-        }
-
+    public RunePuller() {
 
     }
 
-    @Test
-    public void scrapeRunes() {
-        /*
+    public ArrayList<String> returnRunes(String champ) {
+
+           /*
         urls structured like this:
         https://na.op.gg/champion/poppy/statistics/top
 
@@ -82,16 +34,16 @@ public class AppTest {
 
         //really just excellent code in here
         try {
-            ArrayList<String> runeNames = new ArrayList<>();
-
-            String champ = "aatrox";
             champ = champ.toLowerCase();
+            champ = champ.replace("\"", "");
 
             String url = "https://na.op.gg/champion/" + champ + "/statistics/";
 
             //Document doc = Jsoup.connect("https://na.op.gg/champion/poppy/statistics/top").get();
 
             Document doc = Jsoup.connect(url).get();
+            System.out.println(url);
+            System.out.println(champ);
 
 
             Elements runes = doc.getElementsByClass("tabItem ChampionKeystoneRune-1");
@@ -170,5 +122,7 @@ public class AppTest {
         }
 
 
+        return runeNames;
     }
+
 }

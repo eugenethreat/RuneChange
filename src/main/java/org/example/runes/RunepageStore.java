@@ -24,6 +24,12 @@ public class RunepageStore {
             quints
             rune family ids
             name
+
+            precision: 8000
+            domination: 8100
+            sorcery: 8200
+            inspiration: 8300
+            resolve: 8400
          */
 
         Gson gson = new Gson();

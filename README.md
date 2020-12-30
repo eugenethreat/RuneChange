@@ -10,6 +10,8 @@ https://nickcano.com/reversing-league-of-legends-client/
 
 https://lcu.vivide.re/ - LCU docs 
 
+https://jsoup.org/ - java web scraping 
+
 **TODO**: 
 Spin up Discord API - check if Discord has r/w/x permissions to set runes 
 
@@ -20,8 +22,6 @@ figure out how to grab runes / what runes are best - write rune pages for each c
 how to get runes? 
 
 get high elo matches, see what they are running via riot api? https://developer.riotgames.com/apis#match-v4/GET_getMatch
-
-clean up making rune pages if pages already exist 
 
 **Problems**:
 
