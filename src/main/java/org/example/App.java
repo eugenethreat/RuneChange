@@ -213,48 +213,34 @@ public class App {
             resolve: 8400
          */
 
-        newPage.primaryStyleId = 8000;
-        newPage.subStyleId = 8100;
-
         //primary id
-        if (opRunes.contains(8112) || opRunes.contains(8124) || opRunes.contains(8128) || opRunes.contains(9923)) {
-            System.out.println("domination");
+        String arbFirst = String.valueOf(opRunes.get(0));
+
+        if (arbFirst.matches("81[0-9][0-9]")) {
             newPage.primaryStyleId = 8100;
-        } else if (opRunes.contains(8214) || opRunes.contains(8229) || opRunes.contains(8230)) {
-            System.out.println("sorcery");
+        } else if (arbFirst.matches("82[0-9][0-9]")) {
             newPage.primaryStyleId = 8200;
-        } else if (opRunes.contains(8351) || opRunes.contains(8360) || opRunes.contains(8358)) {
-            System.out.println("inspiration");
+        } else if (arbFirst.matches("83[0-9][0-9]")) {
             newPage.primaryStyleId = 8300;
-        } else if (opRunes.contains(8437) || opRunes.contains(8439) || opRunes.contains(8465)) {
-            System.out.println("resolve");
+        } else if (arbFirst.matches("84[0-9][0-9]")) {
             newPage.primaryStyleId = 8400;
-        } else if (opRunes.contains(8005) || opRunes.contains(8008) || opRunes.contains(8021) || opRunes.contains(8010)) {
-            System.out.println("precision");
-            newPage.primaryStyleId = 8000;
+        } else if (arbFirst.matches("80[0-9][0-9]")) {
+            newPage.primaryStyleId = 8500;
         }
 
 
         String arbSecond = String.valueOf(opRunes.get(4));
+        //first secondary rune
         if (arbSecond.matches("81[0-9][0-9]")) {
-            System.out.println("domination secondary!");
             newPage.subStyleId = 8100;
         } else if (arbSecond.matches("82[0-9][0-9]")) {
-            System.out.println("srocery secondary!");
             newPage.subStyleId = 8200;
-
         } else if (arbSecond.matches("83[0-9][0-9]")) {
             newPage.subStyleId = 8300;
-
-            System.out.println("inspiration secondary!");
         } else if (arbSecond.matches("84[0-9][0-9]")) {
-            System.out.println("reoslve secondary!");
             newPage.subStyleId = 8400;
-
         } else if (arbSecond.matches("80[0-9][0-9]")) {
-            System.out.println("precision secondary!");
             newPage.subStyleId = 8500;
-
         }
 
         newPage.selectedPerkIds = opRunes;

@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3f4a73f-4f3f-404c-a857-5c925b1639aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/puller/RunePuller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/runes/RunepageStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/runes/RunepageStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/App$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/runes/RunepageStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/runes/RunepageStore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +171,7 @@
       <workItem from="1609088057207" duration="512000" />
       <workItem from="1609088591462" duration="5605000" />
       <workItem from="1609267237055" duration="3066000" />
-      <workItem from="1609329434172" duration="12959000" />
+      <workItem from="1609329434172" duration="13116000" />
     </task>
     <servers />
   </component>
@@ -215,22 +207,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1010" y="333" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609016728955" />
-    <state width="960" height="205" key="GridCell.Tab.0.bottom" timestamp="1609342557942">
+    <state width="960" height="205" key="GridCell.Tab.0.bottom" timestamp="1609342806446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="205" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342557942" />
-    <state width="960" height="205" key="GridCell.Tab.0.center" timestamp="1609342557942">
+    <state width="960" height="205" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342806446" />
+    <state width="960" height="205" key="GridCell.Tab.0.center" timestamp="1609342806446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="205" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342557942" />
-    <state width="960" height="205" key="GridCell.Tab.0.left" timestamp="1609342557941">
+    <state width="960" height="205" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342806446" />
+    <state width="960" height="205" key="GridCell.Tab.0.left" timestamp="1609342806446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="205" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342557941" />
-    <state width="960" height="205" key="GridCell.Tab.0.right" timestamp="1609342557942">
+    <state width="960" height="205" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342806446" />
+    <state width="960" height="205" key="GridCell.Tab.0.right" timestamp="1609342806446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="960" height="205" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342557942" />
+    <state width="960" height="205" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1609342806446" />
     <state width="960" height="353" key="GridCell.Tab.1.bottom" timestamp="1609017357738">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
