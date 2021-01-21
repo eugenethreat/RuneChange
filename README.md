@@ -1,7 +1,7 @@
 **RuneChange**
 Small app that pulls and sets runes based on champ
 
-(https://github.com/eugenethreat/RuneChange/blob/main/resources/runechanger_gui1.png)
+![demo image](https://github.com/eugenethreat/RuneChange/blob/main/resources/runechanger_gui1.png)
 
 **Resources**: 
 
