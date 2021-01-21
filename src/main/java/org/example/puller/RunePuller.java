@@ -36,6 +36,7 @@ public class RunePuller {
         try {
             champ = champ.toLowerCase();
             champ = champ.replace("\"", "");
+            champ = champ.replace("'", "");
 
             String url = "https://na.op.gg/champion/" + champ + "/statistics/";
 

@@ -13,9 +13,9 @@ import org.example.champs.ChampLoader;
 import org.example.puller.RunePuller;
 import org.example.runes.RuneFamily;
 import org.example.runes.RuneSlots;
+import view.Mainframe;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -32,9 +32,12 @@ public class App {
 
     static RunePuller opggGetter = new RunePuller();
 
+    private static Mainframe viewer;
+
     public static void main(String[] args) {
 
         System.out.println("running...");
+        viewer = new Mainframe();
 
         /*
         Adds a listener waiting for an instance of the League Client
@@ -69,6 +72,9 @@ public class App {
      */
     private static void waitUntilLockin() {
         try {
+
+            viewer.getContent().getProgress().setText("waiting for champ select...");
+
             JsonObject details = getApi().executeGet("/lol-champ-select/v1/session", JsonObject.class);
 
             while (details == null) {
@@ -92,11 +98,11 @@ public class App {
             /*
             wait till a champ is locked in
              */
-            Object de2 = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
+            Object champAsInteger = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
 
-            while (de2.toString().equals("0.0")) {
+            while (champAsInteger.toString().equals("0.0")) {
                 //nothing
-                de2 = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
+                champAsInteger = getApi().executeGet("/lol-champ-select/v1/current-champion", Object.class);
             }
 
         } catch (IOException e) {
@@ -128,6 +134,9 @@ public class App {
             e.printStackTrace();
         }
 
+
+        viewer.getContent().getChampNameLabel().setText(champ);
+
         System.out.println("CHAMP: " + champ);
         return champ;
     }
@@ -150,10 +159,17 @@ public class App {
                 getApi().executeDelete("/lol-perks/v1/pages");
             }
 
+            viewer.getContent().getProgress().setText("fetching champion...");
             String champ = getCurrentChamp();
+
+            viewer.getContent().getProgress().setText("fetching runes...");
             LolPerksPerkPageResource newPage = doTheThing(champ);
 
+            viewer.getContent().getProgress().setText("setting runepage...");
             getApi().executePost("/lol-perks/v1/pages/", newPage);
+
+            viewer.getContent().getProgress().setText("all clear!");
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -204,6 +220,8 @@ public class App {
 
         newPage.name = "Runes: " + champ;
 
+        viewer.getContent().getListOfRunes().setText(runenameStrings.toString());
+
         //GOTTA GET THESE SOMEHOW
         /*
             precision: 8000
@@ -243,8 +261,11 @@ public class App {
             newPage.subStyleId = 8500;
         }
 
-        newPage.selectedPerkIds = opRunes;
+        System.out.println(opRunes);
+        //soraka works?
+        //skarner works
 
+        newPage.selectedPerkIds = opRunes;
 
         return newPage;
 
