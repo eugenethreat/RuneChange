@@ -1,3 +1,8 @@
+**RuneChange**
+Small app that pulls and sets runes based on champ
+
+(http://url/to/img.png)
+
 **Resources**: 
 
 https://github.com/stirante/RuneChanger
@@ -30,4 +35,6 @@ server returns runepage
 client reads response via discord 
 
 client sets runepage 
+
+
 

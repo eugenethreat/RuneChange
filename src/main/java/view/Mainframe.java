@@ -24,6 +24,7 @@ public class Mainframe extends JFrame {
             e.printStackTrace();
         }
 
+        //https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
         GridBagLayout gr = new GridBagLayout();
         this.setLayout(gr);
 
