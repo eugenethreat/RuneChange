@@ -9,9 +9,13 @@ Spin up Discord API - check if Discord has r/w/x permissions to set runes
 
 Clean up datadragon pattern matching
 
+update datadragon to latest version 
+
 Add routine to not crash on connection while client is spinning up 
 
 Add panels for individual runes  
+
+create launcher / native runtime 
 
 ## **Problems**:
 LCU wrapper only runs locally - can't be entirely server side 
