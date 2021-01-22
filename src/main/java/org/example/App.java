@@ -15,6 +15,7 @@ import org.example.runes.RuneFamily;
 import org.example.runes.RuneSlots;
 import view.Mainframe;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -63,6 +64,7 @@ public class App {
     }
 
     private static void whenConnected() {
+        //todo: method that stalls until client launched
         waitUntilLockin();
         setNewPage();
     }
@@ -110,6 +112,23 @@ public class App {
             api.stop();
         }
 
+    }
+
+    /*
+        gets champ portrait from datadragon and sets
+     */
+    private static void getChampPortrait(String champ){
+        String path = ".\\resources\\tiles\\";
+
+        champ = champ.substring(0,1).toUpperCase() + champ.substring(1);
+        champ = champ.replace("\"", "");
+
+        File portrait = new File(path + champ + "_0");
+        System.out.println(portrait);
+
+        ImageIcon champIcon = new ImageIcon(path+champ+"_0.jpg");
+
+        viewer.getContent().getChampNameLabel().setIcon(champIcon);
     }
 
     /*
@@ -161,6 +180,8 @@ public class App {
 
             viewer.getContent().getProgress().setText("fetching champion...");
             String champ = getCurrentChamp();
+
+            getChampPortrait(champ);
 
             viewer.getContent().getProgress().setText("fetching runes...");
             LolPerksPerkPageResource newPage = doTheThing(champ);
@@ -243,10 +264,9 @@ public class App {
         } else if (arbFirst.matches("84[0-9][0-9]")) {
             newPage.primaryStyleId = 8400;
         } else if (arbFirst.matches("80[0-9][0-9]")) {
-            newPage.primaryStyleId = 8500;
+            newPage.primaryStyleId = 8000;
         }
-
-
+        
         String arbSecond = String.valueOf(opRunes.get(4));
         //first secondary rune
         if (arbSecond.matches("81[0-9][0-9]")) {
@@ -258,7 +278,7 @@ public class App {
         } else if (arbSecond.matches("84[0-9][0-9]")) {
             newPage.subStyleId = 8400;
         } else if (arbSecond.matches("80[0-9][0-9]")) {
-            newPage.subStyleId = 8500;
+            newPage.subStyleId = 8000;
         }
 
         System.out.println(opRunes);
