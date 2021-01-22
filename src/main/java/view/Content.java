@@ -57,17 +57,17 @@ public class Content extends JPanel {
         this.add(progress, progressCons);
     }
 
-        private void makeChampPic() {
-            JPanel champPicPanel;
-            champPicPanel = new JPanel();
+    private void makeChampPic() {
+        JPanel champPicPanel;
+        champPicPanel = new JPanel();
 
-            champPicPanel.setPreferredSize(new Dimension(100, 100));
-            GridBagConstraints champCons = new GridBagConstraints();
+        champPicPanel.setPreferredSize(new Dimension(100, 100));
+        GridBagConstraints champCons = new GridBagConstraints();
 
-            champCons.gridx = 0;
-            champCons.gridy = 0;
+        champCons.gridx = 0;
+        champCons.gridy = 0;
 
-            champNameLabel.setPreferredSize((new Dimension(100, 100)));
+        champNameLabel.setPreferredSize((new Dimension(100, 100)));
 
         champPicPanel.add(champNameLabel);
 
