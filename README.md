@@ -12,7 +12,7 @@ Add routine to not crash on connection while client is spinning up
 
 Add panels for individual runes  
 
-##**Problems**:
+## **Problems**:
 LCU wrapper only runs locally - can't be entirely server side 
 -create lightweight client that takes care of setting runes 
 -might need to write own api that interacts w client, ie: 
