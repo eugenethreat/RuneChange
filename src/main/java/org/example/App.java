@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.stirante.lolclient.ClientApi;
 import com.stirante.lolclient.ClientConnectionListener;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
 
@@ -15,6 +17,7 @@ import org.example.runes.RuneFamily;
 import org.example.runes.RuneSlots;
 import view.Mainframe;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
@@ -117,18 +120,33 @@ public class App {
     /*
         gets champ portrait from datadragon and sets
      */
-    private static void getChampPortrait(String champ){
+    private static void getChampPortrait(String champ) {
         String path = ".\\resources\\tiles\\";
 
-        champ = champ.substring(0,1).toUpperCase() + champ.substring(1);
+        champ = champ.substring(0, 1).toUpperCase() + champ.substring(1);
         champ = champ.replace("\"", "");
 
-        File portrait = new File(path + champ + "_0");
+        File portrait = new File(path + champ + "_0.jpg");
         System.out.println(portrait);
 
-        ImageIcon champIcon = new ImageIcon(path+champ+"_0.jpg");
+        ImageIcon champIcon = new ImageIcon(path + champ + "_0.jpg");
 
-        viewer.getContent().getChampNameLabel().setIcon(champIcon);
+        //https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
+        BufferedImage img = null;
+        try {
+            img =  ImageIO.read(portrait);
+            //sets img to champ portrait
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        JLabel here = viewer.getContent().getChampNameLabel();
+        Image dimg = img.getScaledInstance(here.getWidth(), here.getHeight(),
+                Image.SCALE_SMOOTH);
+        ImageIcon asdf = new ImageIcon(dimg);
+
+        viewer.getContent().getChampNameLabel().setIcon(asdf);
     }
 
     /*
@@ -266,7 +284,7 @@ public class App {
         } else if (arbFirst.matches("80[0-9][0-9]")) {
             newPage.primaryStyleId = 8000;
         }
-        
+
         String arbSecond = String.valueOf(opRunes.get(4));
         //first secondary rune
         if (arbSecond.matches("81[0-9][0-9]")) {
