@@ -123,8 +123,8 @@ public class RunePuller {
         }
 
         //if runeNames is >9 (pulled too many) prune it
-        if(runeNames.size() > 9){
-            for(int x = 9 ; 9 < runeNames.size() ; x++){
+        if(runeNames.size() > 8){
+            for(int x = 8 ; x < runeNames.size() ; x++){
                 runeNames.remove(x);
             }
         }

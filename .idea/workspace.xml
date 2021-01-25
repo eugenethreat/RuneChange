@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3f4a73f-4f3f-404c-a857-5c925b1639aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/puller/RunePuller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/puller/RunePuller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +182,7 @@
       <workItem from="1611261307964" duration="181000" />
       <workItem from="1611280819873" duration="3278000" />
       <workItem from="1611605994127" duration="426000" />
-      <workItem from="1611606436074" duration="2565000" />
+      <workItem from="1611606436074" duration="2703000" />
     </task>
     <servers />
   </component>
