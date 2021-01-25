@@ -21,6 +21,9 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import com.formdev.flatlaf.*;
 
 
 public class App {
@@ -41,19 +44,36 @@ public class App {
     public static void main(String[] args) {
 
         System.out.println("running...");
+
+        FlatLightLaf.install();
+
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
+        }
+
+// create UI here...
+
         viewer = new Mainframe();
 
         /*
         Adds a listener waiting for an instance of the League Client
         Binds and does a thing
          */
+        //waitForClient();
+
+
         api.addClientConnectionListener(new ClientConnectionListener() {
             @Override
             public void onClientConnected() {
                 System.out.println("connected");
 
-                whenConnected();
-                api.stop();
+                waitForClient();
+
+
+                waitUntilLockin();
+                setNewPage();
 
             }
 
@@ -66,10 +86,21 @@ public class App {
 
     }
 
-    private static void whenConnected() {
-        //todo: method that stalls until client launched
-        waitUntilLockin();
-        setNewPage();
+    /*
+    Waits for client to launch before trying to connect
+     */
+    private static void waitForClient() {
+
+//        long p = Runtime.getRuntime().freeMemory();
+
+        //this will be fixed later using the process API
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //wait 10 seconds
+
     }
 
     /*
@@ -80,25 +111,13 @@ public class App {
 
             viewer.getContent().getProgress().setText("waiting for champ select...");
 
-            JsonObject details = getApi().executeGet("/lol-champ-select/v1/session", JsonObject.class);
+            JsonObject details = null;
 
             while (details == null) {
                 //wait until champ select is entered
                 details = getApi().executeGet("/lol-champ-select/v1/session", JsonObject.class);
             }
             //better performance may be to hook into client and wait until...
-
-            /*
-            id: {actions=[[{actorCellId=0.0, championId=266.0, completed=false, id=1.0, isAllyAction=true, isInProgress=true,
-            pickTurn=1.0, type=pick}]], allowBattleBoost=false, allowDuplicatePicks=false, allowLockedEvents=false, allowRerolling=false,
-            allowSkinSelection=true, bans={myTeamBans=[], numBans=0.0, theirTeamBans=[]}, benchChampionIds=[], benchEnabled=false, boostableSkinCount=1.0, c
-            hatDetails={chatRoomName=c1~3c2b59ea33b56d961430c99f762153798f74b940@sec.pvp.net, chatRoomPassword=yeBruCQ6a6DyVmpS}, counter=-1.0,
-            entitledFeatureState={additionalRerolls=0.0, unlockedSkinIds=[]}, gameId=0.0, hasSimultaneousBans=false, hasSimultaneousPicks=true,
-            isCustomGame=true, isSpectating=false, localPlayerCellId=0.0, lockedEventIndex=-1.0, myTeam=[{assignedPosition=, cellId=0.0, championId=266.0,
-            championPickIntent=0.0, entitledFeatureType=, selectedSkinId=266000.0, spell1Id=4.0, spell2Id=12.0, summonerId=5.3750041E7, team=1.0, wardSkinId=-1.0}],
-             rerollsRemaining=0.0, skipChampionSelect=false, theirTeam=[], timer={adjustedTimeLeftInPhase=88232.0, internalNowInEpochMs=1.609268840573E12, isInfinite=false,
-             phase=BAN_PICK, totalTimeInPhase=92624.0}, trades=[]}
-             */
 
             /*
             wait till a champ is locked in
@@ -112,7 +131,6 @@ public class App {
 
         } catch (IOException e) {
             e.printStackTrace();
-            api.stop();
         }
 
     }
@@ -134,7 +152,7 @@ public class App {
         //https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
         BufferedImage img = null;
         try {
-            img =  ImageIO.read(portrait);
+            img = ImageIO.read(portrait);
             //sets img to champ portrait
 
         } catch (IOException e) {
@@ -212,7 +230,6 @@ public class App {
 
         } catch (IOException e) {
             e.printStackTrace();
-            api.stop();
         }
 
 

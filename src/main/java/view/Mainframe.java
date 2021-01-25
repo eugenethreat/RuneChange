@@ -17,13 +17,6 @@ public class Mainframe extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(new Dimension(250, 450));
 
-        try {
-            UIManager.setLookAndFeel(
-                    UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
         //https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html
         GridBagLayout gr = new GridBagLayout();
         this.setLayout(gr);
